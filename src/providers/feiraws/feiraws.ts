@@ -17,7 +17,7 @@ export class FeirawsProvider {
     ) {
     console.log('Hello FeirawsProvider Provider');
     console.log(_plataform);
-    if(this._plataform.is("mobile")){
+    if(this._plataform.is("cordova")){
       this.basepath = "https://baobahomews.herokuapp.com";
     }
   }

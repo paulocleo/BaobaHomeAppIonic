@@ -18,6 +18,8 @@ import { FeirawsProvider } from '../../providers/feiraws/feiraws';
 })
 export class CozinhaPage {
 
+  public listaFeira = new Array<any>();
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -29,7 +31,9 @@ export class CozinhaPage {
 
     this.feiraProvider.getFeiraWs().subscribe(
       data=>{
-        console.log(data);
+        const response = (data as any);
+        this.listaFeira = JSON.parse(response._body);
+        console.log(this.listaFeira);
       },
       error=>{
         console.log(error);
