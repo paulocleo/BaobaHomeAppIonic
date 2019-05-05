@@ -1,5 +1,11 @@
 {
   "name": "BaobaHome",
   "app_id": "",
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "proxies": [
+    {
+      "path": "/baobawsapi",
+      "proxyUrl": "https://baobahomews.herokuapp.com/"
+    }
+  ]
 }
