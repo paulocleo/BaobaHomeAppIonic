@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { FeirawsProvider } from '../../providers/feiraws/feiraws';
+import { AlertController } from 'ionic-angular';
+import { LoadingController } from 'ionic-angular';
 
 /**
  * Generated class for the CozinhaPage page.
@@ -23,7 +25,9 @@ export class CozinhaPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public feiraProvider: FeirawsProvider) {
+    public feiraProvider: FeirawsProvider,
+    public alertControl: AlertController,
+    public loadControl: LoadingController) {
   }
 
   ionViewDidLoad() {
@@ -36,9 +40,28 @@ export class CozinhaPage {
         console.log(this.listaFeira);
       },
       error=>{
+        this.showAlertaConexao();
+        console.log("Entrou no error");
         console.log(error);
       }
     );
+  }
+
+  showAlertaConexao() {
+    const alert = this.alertControl.create({
+      title: 'Ops! Algo Errado.',
+      subTitle: 'Verifique conexão com a Internet!',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+  loadingList() {
+    const loader = this.loadControl.create({
+      content: "Carregando...",
+      duration: 3000
+    });
+    loader.present();
   }
 
 }

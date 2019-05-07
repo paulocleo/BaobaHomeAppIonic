@@ -21,27 +21,27 @@
       <ion-avatar item-start>
           <ion-icon name="barcode"></ion-icon>
       </ion-avatar>
-      <h2>{{feira.codigoBarras}}</h2>      
+      <h2>{{feira.nomeProduto}}</h2> 
+      <p>{{feira.codigoBarras}}</p>        
     </ion-item>
 
-    <img src="img/advance-card-bttf.png">
+    <img class="iconFeira" src="assets/imgs/icon_pao.png">
 
     <ion-card-content>
-      <p>{{ feira.nomeProduto }}.</p>
+      <!--<p>{{ feira.nomeProduto }}.</p>-->
     </ion-card-content>
 
     <ion-row>
       <ion-col>
         <button ion-button icon-start clear small>
-          <ion-icon name="thumbs-up"></ion-icon>
+          <ion-icon name="pricetag"></ion-icon>
           <div>{{ feira.quantidade }} itens</div>
         </button>
       </ion-col>
       
-      <ion-col align-self-center text-center>
-        <ion-note>
-          {{ feira.dataVencimento }}
-        </ion-note>
+      <ion-col align-self-center>
+        <ion-icon name="calendar"></ion-icon>
+         <div> {{ feira.dataVencimento }} </div>        
       </ion-col>
     </ion-row>
 
