@@ -19,10 +19,10 @@
 
     <ion-item>
       <ion-avatar item-start>
-          <ion-icon name="barcode"></ion-icon>
+        <ion-icon name="barcode"></ion-icon>
       </ion-avatar>
-      <h2>{{feira.nomeProduto}}</h2> 
-      <p>{{feira.codigoBarras}}</p>        
+      <h2>{{feira.nomeProduto}}</h2>
+      <p>{{feira.codigoBarras}}</p>
     </ion-item>
 
     <img class="iconFeira" src="assets/imgs/icon_pao.png">
@@ -38,10 +38,12 @@
           <div>{{ feira.quantidade }} itens</div>
         </button>
       </ion-col>
-      
+
       <ion-col align-self-center>
-        <ion-icon name="calendar"></ion-icon>
-         <div> {{ feira.dataVencimento }} </div>        
+        <button ion-button icon-start clear small>
+          <ion-icon name="calendar"></ion-icon>
+          <div> {{ feira.dataVencimento }} </div>
+        </button>
       </ion-col>
     </ion-row>
 

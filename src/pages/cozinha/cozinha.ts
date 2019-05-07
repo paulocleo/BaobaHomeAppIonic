@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Loading } from 'ionic-angular';
 import { FeirawsProvider } from '../../providers/feiraws/feiraws';
 import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
@@ -21,6 +21,7 @@ import { LoadingController } from 'ionic-angular';
 export class CozinhaPage {
 
   public listaFeira = new Array<any>();
+  public loader:Loading;
 
   constructor(
     public navCtrl: NavController, 
@@ -32,14 +33,16 @@ export class CozinhaPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CozinhaPage');
-
+    this.loadingList();
     this.feiraProvider.getFeiraWs().subscribe(
-      data=>{
+      data=>{        
         const response = (data as any);
         this.listaFeira = JSON.parse(response._body);
         console.log(this.listaFeira);
+        this.loader.dismiss();
       },
       error=>{
+        this.loader.dismiss();
         this.showAlertaConexao();
         console.log("Entrou no error");
         console.log(error);
@@ -57,11 +60,9 @@ export class CozinhaPage {
   }
 
   loadingList() {
-    const loader = this.loadControl.create({
-      content: "Carregando...",
-      duration: 3000
+    this.loader = this.loadControl.create({
+      content: "Carregando..."
     });
-    loader.present();
+    this.loader.present();    
   }
-
 }
