@@ -11,6 +11,7 @@ import { Platform } from 'ionic-angular';
 @Injectable()
 export class FeirawsProvider {
   basepath = '/baobawsapi';
+  
   constructor(
     public http: Http,
     private _plataform: Platform
@@ -22,8 +23,8 @@ export class FeirawsProvider {
     }
   }
 
-  getFeiraWs(){
-    return this.http.get(`${this.basepath}/feiras`);
+  getFeiraWs(valBusca:string){
+    return this.http.get(`${this.basepath}/feiraestoque?valBusca=${valBusca}`);
   }
 
 }

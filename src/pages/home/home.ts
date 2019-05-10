@@ -7,8 +7,15 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  luzQuarto01:string = '';
 
+  constructor(public navCtrl: NavController) {
+    this.luzQuarto01 = "true";
+  }
+
+  onClickQuarto01()
+  {
+    alert(this.luzQuarto01);
   }
 
 }

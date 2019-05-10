@@ -26,12 +26,9 @@ export class FeiraaddwsProvider {
     }
   }
 
-  consumir() {
-    return this.http.get(`${this.basepath}/feiras`);
-  }
   consumirProduto(feira: any) {
 
     feira.quantidade = feira.quantidade - 1;
-    return this.http.get(`${this.basepath}/addfeira?barras=${feira.codigoBarras}&data="${feira.dataVencimento}"&nome="${feira.nomeProduto}"&preco=${feira.preco}&quantidade=${feira.quantidade}&fastTime=${feira.fastTimeData}`);
+    return this.http.get(`${this.basepath}/addfeira?barras=${feira.codigoBarras}&data=${feira.dataVencimento}&nome=${feira.nomeProduto}&preco=${feira.preco}&quantidade=${feira.quantidade}&fastTime=${feira.fastTimeData}`);
   }
 }

@@ -24,6 +24,7 @@ export class CozinhaPage {
 
   public listaFeira = new Array<any>();
   public loader: Loading;
+  valBusca: string = '';
 
   constructor(
     public navCtrl: NavController,
@@ -37,7 +38,7 @@ export class CozinhaPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad CozinhaPage');
     this.loadingList();
-    this.feiraProvider.getFeiraWs().subscribe(
+    this.feiraProvider.getFeiraWs(this.valBusca).subscribe(
       data => {
         const response = (data as any);
         this.listaFeira = JSON.parse(response._body);
@@ -97,5 +98,10 @@ export class CozinhaPage {
       ]
     });
     popConfirmacao.present();
+  }
+
+  onInput(event)
+  {
+    alert(this.valBusca);
   }
 }
