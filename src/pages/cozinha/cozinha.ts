@@ -3,6 +3,7 @@ import { NavController, NavParams, Loading } from 'ionic-angular';
 import { FeirawsProvider } from '../../providers/feiraws/feiraws';
 import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
+import { FeiraaddwsProvider } from '../../providers/feiraaddws/feiraaddws';
 
 /**
  * Generated class for the CozinhaPage page.
@@ -15,18 +16,20 @@ import { LoadingController } from 'ionic-angular';
   selector: 'page-cozinha',
   templateUrl: 'cozinha.html',
   providers: [
-    FeirawsProvider
+    FeirawsProvider,
+    FeiraaddwsProvider
   ]
 })
 export class CozinhaPage {
 
   public listaFeira = new Array<any>();
-  public loader:Loading;
+  public loader: Loading;
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     public feiraProvider: FeirawsProvider,
+    public feiraAddProvider: FeiraaddwsProvider,
     public alertControl: AlertController,
     public loadControl: LoadingController) {
   }
@@ -35,13 +38,14 @@ export class CozinhaPage {
     console.log('ionViewDidLoad CozinhaPage');
     this.loadingList();
     this.feiraProvider.getFeiraWs().subscribe(
-      data=>{        
+      data => {
         const response = (data as any);
         this.listaFeira = JSON.parse(response._body);
+
         console.log(this.listaFeira);
         this.loader.dismiss();
       },
-      error=>{
+      error => {
         this.loader.dismiss();
         this.showAlertaConexao();
         console.log("Entrou no error");
@@ -63,6 +67,35 @@ export class CozinhaPage {
     this.loader = this.loadControl.create({
       content: "Carregando..."
     });
-    this.loader.present();    
+    this.loader.present();
+  }
+
+  onClickBtConsumir(feira: any) {
+
+    const popConfirmacao = this.alertControl.create({
+      title: 'Confirmação!',
+      message: `Deseja consumir o produto ${feira.nomeProduto}?`,      
+      buttons: [
+        {
+          text: 'Não',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Sim',
+          handler: data => {
+            console.log('Saved clicked');
+            this.feiraAddProvider.consumirProduto(feira).subscribe(
+              data => {
+                const responseAdd = (data as any);
+                //alert(responseAdd);
+              }
+            )
+          }
+        }
+      ]
+    });
+    popConfirmacao.present();
   }
 }

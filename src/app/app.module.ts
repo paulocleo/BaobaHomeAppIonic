@@ -12,6 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CozinhaPage } from '../pages/cozinha/cozinha';
 import { HttpModule } from '@angular/http';
+import { FeiraaddwsProvider } from '../providers/feiraaddws/feiraaddws';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { HttpModule } from '@angular/http';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    FeiraaddwsProvider,
     //FeirawsProvider
   ]
 })

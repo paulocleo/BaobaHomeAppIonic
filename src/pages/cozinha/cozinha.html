@@ -21,8 +21,8 @@
       <ion-avatar item-start>
         <ion-icon name="barcode"></ion-icon>
       </ion-avatar>
-      <h2>{{feira.nomeProduto}}</h2>
-      <p>{{feira.codigoBarras}}</p>
+      <h2>{{(feira.nomeProduto).replace('"', '').replace('"', '')}}</h2>
+      <p>{{feira.codigoBarras}}</p> 
     </ion-item>
 
     <img class="iconFeira" src="assets/imgs/icon_pao.png">
@@ -37,14 +37,18 @@
           <ion-icon name="pricetag"></ion-icon>
           <div>{{ feira.quantidade }} itens</div>
         </button>
-      </ion-col>
-
-      <ion-col align-self-center>
         <button ion-button icon-start clear small>
           <ion-icon name="calendar"></ion-icon>
-          <div> {{ feira.dataVencimento }} </div>
+          <div> {{ (feira.dataVencimento).replace('"', '').replace('"', '') }} </div>
         </button>
       </ion-col>
+
+      <ion-col align-self-left>          
+        <button ion-button icon-start clear small (click)="onClickBtConsumir(feira)">
+            <ion-icon name="restaurant"></ion-icon>
+          <div>Consumir</div>
+        </button>
+      </ion-col>    
     </ion-row>
 
   </ion-card>
