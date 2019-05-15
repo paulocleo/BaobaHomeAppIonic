@@ -12,7 +12,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CozinhaPage } from '../pages/cozinha/cozinha';
 import { HttpModule } from '@angular/http';
-import { FeiraaddwsProvider } from '../providers/feiraaddws/feiraaddws';
+import { EnergiaPage } from '../pages/energia/energia';
+import { EnergiaAddPage } from '../pages/energia-add/energia-add';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,9 @@ import { FeiraaddwsProvider } from '../providers/feiraaddws/feiraaddws';
     ContactPage,
     HomePage,
     TabsPage,
-    CozinhaPage
+    CozinhaPage,
+    EnergiaPage,
+    EnergiaAddPage
   ],
   imports: [
     BrowserModule,
@@ -35,13 +38,16 @@ import { FeiraaddwsProvider } from '../providers/feiraaddws/feiraaddws';
     ContactPage,
     HomePage,
     TabsPage,
-    CozinhaPage
+    CozinhaPage,
+    EnergiaPage,
+    EnergiaAddPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    FeiraaddwsProvider,
+    //EnergiaWsProvider
+    //FeiraaddwsProvider,
     //FeirawsProvider
   ]
 })

@@ -102,6 +102,23 @@ export class CozinhaPage {
 
   onInput(event)
   {
-    alert(this.valBusca);
+    //alert(this.valBusca);
+    this.carregarLista();
+  }
+
+  carregarLista()
+  {
+    this.feiraProvider.getFeiraWs(this.valBusca).subscribe(
+      data => {
+        const response = (data as any);
+        this.listaFeira = JSON.parse(response._body);
+        console.log(this.listaFeira);
+   
+      },
+      error => {      
+        console.log("Entrou no error");
+        console.log(error);
+      }
+    );
   }
 }
