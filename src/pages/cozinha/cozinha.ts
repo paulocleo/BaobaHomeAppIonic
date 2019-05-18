@@ -89,7 +89,7 @@ export class CozinhaPage {
             console.log('Saved clicked');
             this.feiraAddProvider.consumirProduto(feira).subscribe(
               data => {
-                const responseAdd = (data as any);
+                //const responseAdd = (data as any);
                 //alert(responseAdd);
               }
             )

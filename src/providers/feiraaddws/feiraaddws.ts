@@ -1,9 +1,7 @@
 
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
-import { httpFactory } from '@angular/http/src/http_module';
 import { Platform } from 'ionic-angular';
-import { Observable } from 'rxjs/Observable';
 
 /*
   Generated class for the FeiraaddwsProvider provider.
