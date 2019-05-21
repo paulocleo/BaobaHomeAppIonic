@@ -14,6 +14,7 @@ import { CozinhaPage } from '../pages/cozinha/cozinha';
 import { HttpModule } from '@angular/http';
 import { EnergiaPage } from '../pages/energia/energia';
 import { EnergiaAddPage } from '../pages/energia-add/energia-add';
+import { AcionamentoWsProvider } from '../providers/acionamento-ws/acionamento-ws';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { EnergiaAddPage } from '../pages/energia-add/energia-add';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AcionamentoWsProvider,
     //EnergiaWsProvider
     //FeiraaddwsProvider,
     //FeirawsProvider
